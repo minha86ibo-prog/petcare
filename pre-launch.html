@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paw & Soul — 완벽한 반려생활의 완성</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #1C2B1F;      /* Dark Green */
+            --secondary: #F5F0E8;    /* Off White / Cream */
+            --accent: #C8A96E;       /* Gold */
+            --text-white: #FFFFFF;
+            --text-muted: rgba(245, 240, 232, 0.6);
+            --transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Noto Sans KR', sans-serif;
+        }
+
+        /* Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { 
+            font-family: var(--font-sans); 
+            background-color: var(--primary); 
+            color: var(--secondary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            word-break: keep-all;
+        }
+
+        /* ───── BACKGROUND TEXTURE ───── */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* ───── NAVIGATION ───── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            z-index: 100;
+            padding: 25px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition);
+        }
+
+        nav.scrolled {
+            padding: 15px 50px;
+            background-color: rgba(28, 43, 31, 0.8);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(200, 169, 110, 0.1);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--secondary);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            opacity: 0.8;
+            transition: var(--transition);
+        }
+
+        .nav-menu a:hover {
+            opacity: 1;
+            color: var(--accent);
+        }
+
+        /* ───── HERO SECTION ───── */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            padding: 0 10%;
+            overflow: hidden;
+            z-index: 2;
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 80px;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Content Left */
+        .hero-content {
+            max-width: 650px;
+        }
+
+        .tagline {
+            display: block;
+            color: var(--accent);
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .headline {
+            font-family: var(--font-serif);
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            line-height: 1.15;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .sub-copy {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
+            max-width: 500px;
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        /* Email Form */
+        .form-container {
+            position: relative;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .email-form {
+            display: flex;
+            gap: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            margin-bottom: 15px;
+        }
+
+        .email-form:focus-within {
+            border-color: var(--accent);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .email-form input {
+            flex: 1;
+            background: none;
+            border: none;
+            padding: 0 25px;
+            color: var(--secondary);
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .email-form input::placeholder {
+            color: rgba(245, 240, 232, 0.3);
+        }
+
+        .cta-btn {
+            background-color: var(--accent);
+            color: var(--primary);
+            border: none;
+            padding: 18px 35px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            white-space: nowrap;
+        }
+
+        .cta-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(200, 169, 110, 0.3);
+        }
+
+        .micro-copy {
+            font-size: 0.8rem;
+            color: rgba(245, 240, 232, 0.3);
+            margin-left: 20px;
+        }
+
+        /* Social Proof */
+        .social-proof {
+            margin-top: 40px;
+            font-size: 0.95rem;
+            color: var(--secondary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0;
+        }
+
+        .count-num {
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Visual Right */
+        .hero-visual {
+            position: relative;
+            opacity: 0;
+            transform: translateX(50px);
+        }
+
+        .image-card {
+            width: 100%;
+            aspect-ratio: 0.85;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            border-radius: 30px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+            filter: grayscale(20%);
+        }
+
+        /* ───── MARQUEE BAR ───── */
+        .marquee-bar {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 15px 0;
+            overflow: hidden;
+            display: flex;
+            white-space: nowrap;
+            z-index: 10;
+        }
+
+        .marquee-content {
+            display: flex;
+            animation: marquee 30s linear infinite;
+        }
+
+        .marquee-item {
+            font-size: 0.9rem;
+            font-weight: 700;
+            padding: 0 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* ───── ANIMATION STATES ───── */
+        .animate-in {
+            opacity: 1 !important;
+            transform: translateY(0) !important;
+            transition: var(--transition);
+        }
+
+        .animate-slide-left {
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            transition: var(--transition);
+        }
+
+        /* Success Message */
+        .success-mode .email-form {
+            background: rgba(76, 175, 80, 0.1);
+            border-color: #4CAF50;
+        }
+        
+        .success-mode .cta-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-container { gap: 40px; }
+            .headline { font-size: 3.5rem; }
+        }
+
+        @media (max-width: 768px) {
+            nav { padding: 20px 30px; }
+            .nav-menu { display: none; }
+            .hero { padding: 120px 30px 80px; height: auto; }
+            .hero-container { grid-template-columns: 1fr; }
+            .headline { font-size: 2.8rem; }
+            .hero-visual { order: -1; margin-bottom: 40px; }
+            .email-form { flex-direction: column; border-radius: 20px; padding: 20px; }
+            .email-form input { padding: 15px 0; text-align: center; margin-bottom: 10px; }
+            .cta-btn { width: 100%; justify-content: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="logo">Paw & Soul</a>
+        <div class="nav-menu">
+            <a href="#brand">브랜드 소개</a>
+            <a href="#ingredients">성분 안내</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <!-- Left Side -->
+            <div class="hero-content">
+                <span class="tagline" id="tagline">Coming Soon — 2025 출시 예정</span>
+                <h1 class="headline" id="headline">
+                    함께 사는 공간,<br>
+                    이제 냄새까지<br>
+                    완전해집니다.
+                </h1>
+                <p class="sub-copy" id="subcopy">
+                    Paw & Soul이 곧 선보일 제품은 반려동물과의 일상을 
+                    더 깨끗하고 건강하게 만들어줄 거예요. 
+                    지금 등록하면 가장 먼저 알 수 있습니다.
+                </p>
+
+                <!-- Email Form -->
+                <div class="form-container" id="form-container">
+                    <form class="email-form" id="launch-form">
+                        <input type="email" id="email-input" placeholder="이메일 주소를 입력하세요" required>
+                        <button type="submit" class="cta-btn" id="submit-btn">
+                            첫 공개 소식 받기 <span class="arrow">→</span>
+                        </button>
+                    </form>
+                    <span class="micro-copy">스팸 없음. 언제든 구독 해제 가능.</span>
+                </div>
+
+                <!-- Social Proof -->
+                <div class="social-proof" id="social-proof">
+                    🐾 이미 <span class="count-num" id="waitlist-count">0</span>명이 기다리고 있어요
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="hero-visual" id="hero-visual">
+                <div class="image-card">
+                    <!-- 실제 이미지 들어갈 자리 (Unsplash Pet image for premium vibe) -->
+                    <img src="https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=2060&auto=format&fit=crop" alt="Premium Pet Care">
+                </div>
+            </div>
+        </div>
+
+        <!-- Marquee Bar -->
+        <div class="marquee-bar">
+            <div class="marquee-content">
+                <div class="marquee-item">✦ 탈취</div>
+                <div class="marquee-item">✦ 소독</div>
+                <div class="marquee-item">✦ 반려동물 안전 성분</div>
+                <div class="marquee-item">✦ 국내 최초 기술</div>
+                <!-- Duplicate for seamless loop -->
+                <div class="marquee-item">✦ 탈취</div>
+                <div class="marquee-item">✦ 소독</div>
+                <div class="marquee-item">✦ 반려동물 안전 성분</div>
+                <div class="marquee-item">✦ 국내 최초 기술</div>
+                <div class="marquee-item">✦ 탈취</div>
+                <div class="marquee-item">✦ 소독</div>
+                <div class="marquee-item">✦ 반려동물 안전 성분</div>
+                <div class="marquee-item">✦ 국내 최초 기술</div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // ───── ANIMATIONS ─────
+            const elements = [
+                { id: 'tagline', delay: 200 },
+                { id: 'headline', delay: 400 },
+                { id: 'subcopy', delay: 600 },
+                { id: 'form-container', delay: 800 },
+                { id: 'social-proof', delay: 1000 }
+            ];
+
+            elements.forEach(item => {
+                setTimeout(() => {
+                    document.getElementById(item.id).classList.add('animate-in');
+                }, item.delay);
+            });
+
+            setTimeout(() => {
+                document.getElementById('hero-visual').classList.add('animate-slide-left');
+            }, 500);
+
+            // ───── SCROLL EFFECT ─────
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // ───── COUNT UP ANIMATION ─────
+            const targetCount = 1247;
+            const countElement = document.getElementById('waitlist-count');
+            let currentCount = 0;
+            const duration = 2000; // 2 seconds
+            const startTime = performance.now();
+
+            function updateCount(timestamp) {
+                const elapsed = timestamp - startTime;
+                const progress = Math.min(elapsed / duration, 1);
+                
+                // Ease out cubic
+                const easedProgress = 1 - Math.pow(1 - progress, 3);
+                currentCount = Math.floor(easedProgress * targetCount);
+                
+                countElement.innerText = currentCount.toLocaleString();
+
+                if (progress < 1) {
+                    requestAnimationFrame(updateCount);
+                }
+            }
+
+            setTimeout(() => {
+                requestAnimationFrame(updateCount);
+            }, 1200);
+
+            // ───── FORM SUBMISSION ─────
+            const form = document.getElementById('launch-form');
+            const submitBtn = document.getElementById('submit-btn');
+            const emailInput = document.getElementById('email-input');
+            const formWrapper = document.getElementById('form-container');
+
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Simple front-end validation
+                if (!emailInput.value.includes('@')) return;
+
+                // Visual Feedback
+                formWrapper.classList.add('success-mode');
+                submitBtn.innerHTML = '등록 완료! 소식을 기다려주세요 🐾';
+                emailInput.disabled = true;
+                
+                // Simulate "Green Check" feeling via CSS success-mode class
+                console.log('Pre-launch signup:', emailInput.value);
+            });
+        });
+    </script>
+</body>
+</html>

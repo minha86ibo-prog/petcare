@@ -1220,63 +1220,10 @@ nav.scrolled {
     justify-content: center;
     text-align: center;
     min-height: 600px;
-}
-
-.parallax-slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-}
-
-.parallax-slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    background-image: url('img/emotional_bg.png');
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
-    opacity: 0;
-    animation: parallaxFade 15s infinite;
-}
-
-.slide-1 {
-    background-image: url('img/5320.png');
-    /* Local Pomeranian image */
-    animation-delay: 0s;
-}
-
-.slide-2 {
-    background-image: url('img/sc2026.jpg');
-    /* Local Cat/Owner image */
-    animation-delay: 5s;
-}
-
-.slide-3 {
-    background-image: url('img/siba_03.jpg');
-    /* Local Dog/Owner image */
-    animation-delay: 10s;
-}
-
-
-
-
-@keyframes parallaxFade {
-
-    0%,
-    28%,
-    100% {
-        opacity: 0;
-    }
-
-    5%,
-    23% {
-        opacity: 1;
-    }
 }
 
 .parallax-overlay {
@@ -1285,8 +1232,8 @@ nav.scrolled {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.4));
-    /* Reduced opacity for more clarity */
+    background: rgba(254, 251, 247, 0.45); /* Warm milk tone overlay */
+    backdrop-filter: blur(1px); /* Soft focus effect for readability */
     z-index: 1;
 }
 
@@ -1328,44 +1275,47 @@ nav.scrolled {
 
 .emotional-parallax .cta-form {
     display: flex;
-    gap: 15px;
+    gap: 12px;
     max-width: 550px;
     margin: 0 auto;
+    align-items: center;
 }
 
 .emotional-parallax input {
     flex: 1;
-    padding: 22px 30px;
-    border-radius: 20px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 18px 25px;
+    border-radius: 12px;
+    border: 1px solid rgba(28, 43, 31, 0.15);
     background: #FFF;
-    font-size: 1.05rem;
+    font-size: 1rem;
+    color: var(--primary);
     transition: var(--transition);
 }
 
 .emotional-parallax input:focus {
-    border-color: var(--accent);
+    border-color: var(--primary);
     outline: none;
-    box-shadow: 0 0 0 5px rgba(200, 169, 110, 0.1);
+    box-shadow: 0 0 0 4px rgba(28, 43, 31, 0.08);
 }
 
 .emotional-parallax .btn-primary {
-    padding: 22px 45px;
+    padding: 18px 35px;
     background: var(--primary);
     color: var(--accent);
-    border-radius: 20px;
-    font-weight: 800;
-    font-size: 1.1rem;
+    border-radius: 12px;
+    font-weight: 700;
+    font-size: 1rem;
     transition: var(--transition);
     border: none;
     cursor: pointer;
+    white-space: nowrap;
 }
 
 .emotional-parallax .btn-primary:hover {
     background: var(--accent);
     color: var(--primary);
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(200, 169, 110, 0.3);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(28, 43, 31, 0.15);
 }
 
 /* ───── REDESIGNED FOOTER (Light & Warm) ───── */
@@ -1572,4 +1522,69 @@ nav.scrolled {
         padding: 40px 30px;
         overflow-y: visible;
     }
+}
+
+/* ───── NEWSLETTER SUCCESS MODAL ───── */
+.modal-container.success-modal {
+    width: 90%;
+    max-width: 480px;
+    height: auto;
+    max-height: 90vh;
+    padding: 50px 30px;
+    border-radius: 24px;
+    text-align: center;
+    background: #FAF9F6;
+    border: 2px solid rgba(28, 43, 31, 0.05);
+    box-shadow: 0 30px 80px rgba(10, 22, 18, 0.15);
+    overflow: visible;
+}
+
+.success-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.success-icon {
+    font-size: 3.5rem;
+    margin-bottom: 5px;
+    animation: gentleBounce 3s infinite ease-in-out;
+}
+
+.success-modal-content h2 {
+    font-family: var(--font-serif);
+    font-size: 1.8rem;
+    color: var(--primary);
+    margin: 0;
+    font-weight: 800;
+}
+
+.success-modal-content p {
+    font-size: 1rem;
+    color: #555555;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    word-break: keep-all;
+}
+
+.btn-confirm {
+    width: 100%;
+    padding: 16px 0;
+    background: var(--primary);
+    color: var(--accent);
+    border-radius: 12px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 25px rgba(28, 43, 31, 0.15);
+    transition: var(--transition);
+}
+
+.btn-confirm:hover {
+    background: var(--accent);
+    color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(200, 169, 110, 0.3);
 }
