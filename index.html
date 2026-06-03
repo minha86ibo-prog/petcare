@@ -12,12 +12,17 @@
 </head>
 
 <body>
-    <div class="poka-cursor"></div>
+    <div id="sparkles-container"></div>
 
     <!-- ───── NAVIGATION ───── -->
     <nav>
         <a href="/" class="logo">Paw & Soul</a>
-        <div class="nav-menu">
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
             <a href="#about">브랜드 소개</a>
             <a href="javascript:void(0)" onclick="openProductComingSoonModal()">제품 안내</a>
             <a href="#guides">케어 가이드</a>
@@ -161,7 +166,7 @@
                         </ul>
                     </div>
                     <div class="image-wrapper" data-aos="fade-left">
-                        <img src="https://images.unsplash.com/photo-1581888227599-779811939961?w=800&q=80"
+                        <img src="img/cat_dog.png"
                             alt="Safe for Pets and Owners">
                         <div class="image-badge">
                             <span class="badge-num">48H</span>
@@ -347,11 +352,10 @@
     <div id="newsletter-success-modal" class="modal">
         <div class="modal-overlay" onclick="closeNewsletterSuccessModal()"></div>
         <div class="modal-container success-modal">
-            <button class="modal-close" onclick="closeNewsletterSuccessModal()">&times;</button>
+            <button class="modal-close" onclick="closeNewsletterSuccessModal()" style="color: #FFF;">&times;</button>
             <div class="success-modal-content">
-                <div class="success-icon">🎉</div>
-                <h2>구독해주셔서 감사합니다!</h2>
-                <p>앞으로 신제품 출시 소식, 특별한 이벤트 및 공지사항을 입력하신 이메일로 가장 먼저 전해드릴게요.</p>
+                <h2>🎉 반갑습니다, 보호자님!</h2>
+                <p>아이와 함께하는 공간이 더 맑고 완전해질 수 있도록, Paw & Soul의 첫 신제품 출시 소식과 특별한 혜택을 입력하신 이메일로 가장 먼저 전해드릴게요. 우리 아이를 위한 깨끗한 약속, 조금만 기다려주세요! ✨</p>
                 <button class="btn-confirm" onclick="closeNewsletterSuccessModal()">확인</button>
             </div>
         </div>
@@ -369,6 +373,26 @@
             if (window.scrollY > 50) nav.classList.add('scrolled');
             else nav.classList.remove('scrolled');
         };
+
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('nav-menu');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
+        }
+        
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (hamburger && hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
 
         // Hero Staggered Animations
         document.addEventListener('DOMContentLoaded', () => {
@@ -466,20 +490,28 @@
         // Modal Logic (Newsletter Success)
         const newsletterSuccessModal = document.getElementById('newsletter-success-modal');
         const newsletterForm = document.getElementById('newsletter-subscription-form');
+        const launchForm = document.getElementById('launch-form');
+
+        function handleSubscriptionSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const emailInput = form.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value.includes('@')) {
+                // Open modal
+                newsletterSuccessModal.classList.add('is-active');
+                document.body.style.overflow = 'hidden';
+                
+                // Clear input
+                emailInput.value = '';
+            }
+        }
 
         if (newsletterForm) {
-            newsletterForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                const emailInput = newsletterForm.querySelector('input[type="email"]');
-                if (emailInput && emailInput.value.includes('@')) {
-                    // Open modal
-                    newsletterSuccessModal.classList.add('is-active');
-                    document.body.style.overflow = 'hidden';
-                    
-                    // Clear input
-                    emailInput.value = '';
-                }
-            });
+            newsletterForm.addEventListener('submit', handleSubscriptionSubmit);
+        }
+        
+        if (launchForm) {
+            launchForm.addEventListener('submit', handleSubscriptionSubmit);
         }
 
         function closeNewsletterSuccessModal() {
@@ -487,12 +519,102 @@
             document.body.style.overflow = '';
         }
 
-        // Poka Cursor
-        const poka = document.querySelector('.poka-cursor');
-        window.onmousemove = (e) => {
-            poka.style.left = e.clientX + 'px';
-            poka.style.top = e.clientY + 'px';
-        };
+        // Gold Sparkle Trail
+        const sparklesContainer = document.getElementById('sparkles-container');
+        
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let isMoving = false;
+        let movementTimeout;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isMoving = true;
+            
+            clearTimeout(movementTimeout);
+            movementTimeout = setTimeout(() => {
+                isMoving = false;
+            }, 100);
+        });
+
+        const particles = [];
+        
+        function createSparkle(x, y, vx, vy) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle-particle');
+            
+            // Randomize size between 2px and 5px
+            const size = Math.random() * 3 + 2;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+            
+            sparklesContainer.appendChild(sparkle);
+
+            // Random spread velocity (organic expansion)
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 3 + 1.5;
+            
+            // Combine mouse velocity with random scatter
+            const finalVx = vx * 0.05 + Math.cos(angle) * speed;
+            const finalVy = vy * 0.05 + Math.sin(angle) * speed;
+
+            // Fade out seamlessly within 0.4 - 0.6 seconds (24-36 frames at 60fps)
+            const lifeDuration = Math.random() * 12 + 24;
+
+            particles.push({
+                el: sparkle,
+                x: x,
+                y: y,
+                vx: finalVx,
+                vy: finalVy,
+                life: 1.0,
+                decay: 1.0 / lifeDuration
+            });
+        }
+
+        let lastMouseX = mouseX;
+        let lastMouseY = mouseY;
+
+        function animateCursor(time) {
+            // Calculate velocity
+            const vx = mouseX - lastMouseX;
+            const vy = mouseY - lastMouseY;
+            lastMouseX = mouseX;
+            lastMouseY = mouseY;
+
+            // Create sparkles if moving (abundant amount)
+            const speedSq = vx * vx + vy * vy;
+            if (isMoving && speedSq > 0.5) {
+                // Spawn rate significantly increased
+                const numParticles = Math.min(Math.floor(Math.sqrt(speedSq) * 0.4) + 3, 10);
+                for(let i=0; i<numParticles; i++) {
+                    createSparkle(mouseX, mouseY, vx, vy);
+                }
+            }
+
+            // Update particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= p.decay;
+                
+                if (p.life <= 0) {
+                    if (p.el.parentNode) p.el.parentNode.removeChild(p.el);
+                    particles.splice(i, 1);
+                } else {
+                    p.el.style.left = p.x + 'px';
+                    p.el.style.top = p.y + 'px';
+                    p.el.style.opacity = p.life;
+                    p.el.style.transform = `translate(-50%, -50%) scale(${p.life})`;
+                }
+            }
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        requestAnimationFrame(animateCursor);
     </script>
 </body>
 

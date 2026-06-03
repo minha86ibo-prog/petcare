@@ -53,6 +53,7 @@ body {
     line-height: 1.7;
     overflow-x: hidden;
     word-break: keep-all;
+    cursor: none; /* Hide default cursor */
 }
 
 img {
@@ -252,32 +253,43 @@ nav.scrolled {
 .email-form {
     display: flex;
     gap: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 8px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: transparent;
+    padding: 0;
+    border: none;
     transition: var(--transition);
     margin-bottom: 15px;
     max-width: 550px;
 }
 
 .email-form:focus-within {
-    border-color: var(--accent);
-    background: rgba(255, 255, 255, 0.08);
+    /* Container focus effect removed as it's applied to the input */
 }
 
 .email-form input {
     flex: 1;
-    background: none;
-    border: none;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important;
     padding: 0 25px;
-    color: var(--secondary);
+    border-radius: 50px;
     font-size: 1rem;
     outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: none !important;
+}
+
+.email-form input:-webkit-autofill,
+.email-form input:-webkit-autofill:hover, 
+.email-form input:-webkit-autofill:focus, 
+.email-form input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: #fff !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
 .email-form input::placeholder {
-    color: rgba(245, 240, 232, 0.3);
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .cta-btn {
@@ -507,6 +519,12 @@ nav.scrolled {
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
     /* 깊이감 추가 */
+}
+
+.image-wrapper img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .image-badge {
@@ -756,8 +774,10 @@ nav.scrolled {
 }
 
 .modal-container.cute-modal {
-    overflow: visible;
-    /* Allow characters to peek for cute modal */
+    height: auto !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+    /* Ensure content encapsulates properly and scrolls if needed */
 }
 
 .modal-close {
@@ -929,15 +949,22 @@ nav.scrolled {
 
 /* ───── CUTE MODAL (PRODUCT COMING SOON) ───── */
 .cute-modal {
-    padding: 60px 40px;
+    padding: 60px 40px 40px 40px; /* bottom padding added for breathable room */
     text-align: center;
     background: #FFF;
     border: 10px solid var(--accent);
     border-radius: 40px;
     box-shadow: 0 50px 150px rgba(0, 0, 0, 0.2);
     position: relative;
-    overflow: visible;
-    /* To allow characters to peek out slightly if needed */
+    height: auto;
+    max-height: 90vh;
+    overflow-y: auto; /* Fallback for small screens */
+}
+
+.cute-modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .cute-header {
@@ -1020,7 +1047,7 @@ nav.scrolled {
     display: flex;
     justify-content: center;
     gap: 20px;
-    margin: 40px 0;
+    margin: 25px 0; /* Reduced margin to lift the button */
     flex-wrap: wrap;
 }
 
@@ -1196,17 +1223,26 @@ nav.scrolled {
 }
 
 /* ───── CURSOR ───── */
-.poka-cursor {
+
+#sparkles-container {
     position: fixed;
-    width: 90px;
-    height: 90px;
-    background-image: url('img/poka01.png');
-    background-size: contain;
-    background-repeat: no-repeat;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    transition: transform 0.1s ease;
+    z-index: 9998;
+    overflow: hidden;
+}
+
+.sparkle-particle {
+    position: absolute;
+    border-radius: 50% !important;
+    pointer-events: none;
+    background: #FFD700 !important;
+    box-shadow: 0 0 8px #FFD700;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
 }
 
 
@@ -1533,9 +1569,11 @@ nav.scrolled {
     padding: 50px 30px;
     border-radius: 24px;
     text-align: center;
-    background: #FAF9F6;
-    border: 2px solid rgba(28, 43, 31, 0.05);
-    box-shadow: 0 30px 80px rgba(10, 22, 18, 0.15);
+    background: rgba(255, 255, 255, 0.15); /* 반투명 배경 */
+    backdrop-filter: blur(15px); /* 블러 효과 */
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 30px 80px rgba(10, 22, 18, 0.3);
     overflow: visible;
 }
 
@@ -1543,36 +1581,32 @@ nav.scrolled {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
-}
-
-.success-icon {
-    font-size: 3.5rem;
-    margin-bottom: 5px;
-    animation: gentleBounce 3s infinite ease-in-out;
+    gap: 20px;
 }
 
 .success-modal-content h2 {
     font-family: var(--font-serif);
     font-size: 1.8rem;
-    color: var(--primary);
+    color: #FFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); /* 가독성을 위한 그림자 */
     margin: 0;
     font-weight: 800;
 }
 
 .success-modal-content p {
     font-size: 1rem;
-    color: #555555;
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.4); /* 가독성을 위한 그림자 */
     line-height: 1.6;
     margin-bottom: 15px;
-    word-break: keep-all;
+    word-break: keep-all; /* 모바일에서 어색한 줄바꿈 방지 */
 }
 
 .btn-confirm {
     width: 100%;
     padding: 16px 0;
-    background: var(--primary);
-    color: var(--accent);
+    background: var(--accent);
+    color: var(--primary);
     border-radius: 12px;
     font-size: 1.05rem;
     font-weight: 700;
@@ -1587,4 +1621,273 @@ nav.scrolled {
     color: var(--primary);
     transform: translateY(-2px);
     box-shadow: 0 12px 30px rgba(200, 169, 110, 0.3);
+}
+
+/* ───── MOBILE RESPONSIVENESS (768px & Below) ───── */
+
+/* Hamburger Menu Base Styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.hamburger span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background-color: var(--secondary);
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(9px) rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-9px) rotate(-45deg);
+}
+
+@media (max-width: 768px) {
+    /* Container Width Optimization */
+    .container {
+        padding: 0 20px;
+    }
+    
+    .section {
+        padding: 80px 0;
+    }
+
+    /* Typography & Responsive Text */
+    .section-title {
+        font-size: 28px !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .headline {
+        font-size: 32px !important;
+        margin-bottom: 1.5rem;
+    }
+
+    .banner-text h2 {
+        font-size: 28px !important;
+    }
+
+    .emotional-parallax h2 {
+        font-size: 28px !important;
+    }
+
+    .guide-card h3 {
+        font-size: 22px;
+    }
+
+    .guide-info h2 {
+        font-size: 24px;
+    }
+
+    p {
+        font-size: 15px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+    }
+
+    /* Navigation Bar Mobile UI */
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: var(--primary);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .nav-menu a {
+        font-size: 1.5rem;
+        opacity: 1;
+    }
+
+    /* Hero Section Adjustments */
+    .hero {
+        padding: 0 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .email-form {
+        flex-direction: column;
+        background: transparent;
+        border: none;
+        padding: 0;
+        gap: 15px;
+    }
+
+    .email-form input {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50px;
+        padding: 15px 25px;
+        width: 100%;
+    }
+
+    .cta-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .social-proof {
+        justify-content: center;
+    }
+
+    /* Banner Adjustments */
+    .banner-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        text-align: center;
+    }
+
+    /* About Section */
+    .about-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .feature-list {
+        text-align: left;
+    }
+
+    /* Guide Grid / Flex Columns */
+    .guide-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guide-card {
+        margin-bottom: 20px;
+    }
+
+    /* Newsletter CTA */
+    .emotional-parallax .cta-card {
+        padding: 40px 20px;
+    }
+
+    .emotional-parallax .cta-form {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .emotional-parallax input, 
+    .emotional-parallax .btn-primary {
+        width: 100%;
+    }
+
+    /* Footer adjustments */
+    .footer-top {
+        flex-direction: column;
+        gap: 40px;
+        margin-bottom: 40px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .footer-light {
+        padding: 60px 0 40px;
+        text-align: center;
+    }
+    
+    .footer-light p {
+        margin: 0 auto;
+    }
+    
+    .footer-story {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Modal / Popup */
+    .modal-container {
+        width: 95%;
+        height: 85vh;
+        max-height: 90vh;
+    }
+
+    .modal-close {
+        top: 15px;
+        right: 15px;
+        font-size: 2rem;
+    }
+
+    .lush-modal-content {
+        flex-direction: column;
+    }
+
+    .lush-left, .lush-right {
+        padding: 20px;
+    }
+
+    .product-info-box {
+        padding: 20px;
+    }
+
+    .modal-actions {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .btn-buy {
+        width: 100%;
+    }
+    
+    .cute-modal {
+        padding: 40px 20px;
+    }
+    
+    .cute-header h2 {
+        font-size: 2.5rem;
+    }
+    
+    .preview-grid {
+        gap: 10px;
+    }
+    
+    .preview-item {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .peek-poka {
+        width: 100px;
+    }
 }
