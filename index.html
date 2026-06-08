@@ -2,562 +2,623 @@
 <html lang="ko">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>POKA Portfolio</title>
-
-  <link rel="stylesheet" href="style.css" />
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paw & Soul — 반려동물 케어의 새로운 기준</title>
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" as="style" crossorigin
+        href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" />
 </head>
 
 <body>
+    <div id="sparkles-container"></div>
 
-  <header class="header">
-    <div class="logo">POKA FRIENDS</div>
-
-    <button class="hamburger-btn" aria-label="메뉴 열기" id="hamburgerBtn">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-
-    <nav class="nav">
-      <a href="#about">About</a>
-      <a href="#process">Process</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#goods">Goods</a>
+    <!-- ───── NAVIGATION ───── -->
+    <nav>
+        <a href="/" class="logo">
+            <img src="img/logore.png" alt="Paw & Soul Logo"
+                style="height: 100px; width: auto; object-fit: contain; filter: brightness(0) invert(1);">
+        </a>
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-menu" id="nav-menu">
+            <a href="#about">브랜드 소개</a>
+            <a href="javascript:void(0)" onclick="openProductComingSoonModal()">제품 안내</a>
+            <a href="#guides">케어 가이드</a>
+            <a href="#newsletter">소식 받기</a>
+        </div>
     </nav>
-  </header>
+
+    <main>
+        <!-- ───── HERO SECTION (PRE-LAUNCH) ───── -->
+        <section class="hero" id="home">
+            <div class="hero-bg"></div>
+            <div class="hero-container">
+                <div class="hero-content">
+                    <span class="tagline" id="tagline">Coming Soon — 2027 출시 예정</span>
+                    <h1 class="headline" id="headline">함께 사는 공간,<br>이제 냄새까지<br>완전해집니다.</h1>
+                    <p class="sub-copy" id="subcopy">
+                        Paw & Soul이 곧 선보일 제품은 반려동물과의 일상을 더 깨끗하고 건강하게 만들어줄 거예요.
+                        지금 등록하면 가장 먼저 알 수 있습니다.
+                    </p>
+
+                    <div class="form-container" id="hero-form">
+                        <form class="email-form" id="launch-form">
+                            <input type="email" placeholder="이메일 주소를 입력하세요" required>
+                            <button type="submit" class="cta-btn">첫 공개 소식 받기 →</button>
+                        </form>
+                        <span class="micro-copy">스팸 없음. 언제든 구독 해제 가능.</span>
+                    </div>
+
+                    <div class="social-proof" id="hero-proof">
+                        🐾 이미 <span class="count-num" id="waitlist-count">1,247</span>명이 기다리고 있어요
+                    </div>
+                </div>
+            </div>
+
+            <!-- Marquee Bar -->
+            <div class="marquee-bar">
+                <div class="marquee-content">
+                    <div class="marquee-item">✦ 국내 특허 기술</div>
+                    <div class="marquee-item">✦ 피부 자극 없음</div>
+                    <div class="marquee-item">🐾 포카의 안심 검수 완료</div>
+                    <div class="marquee-item">✦ 전성분 공개</div>
+                    <div class="marquee-item">✦ 99.99% 탈취력</div>
+                    <div class="marquee-item">✦ 끈적임 없는 빠른 흡수</div>
+                    <div class="marquee-item">🌿 자연 유래 성분 100%</div>
+                    <div class="marquee-item">✨ 털 뭉치도 반한 부드러움</div>
+                    <div class="marquee-item">✦ 24시간 지속되는 쾌적함</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ───── BANNER SECTION (SIBA) ───── -->
+        <section class="banner-section">
+            <div class="container">
+                <div class="banner-wrapper">
+                    <div class="banner-text" data-aos="fade-right">
+                        <span class="label">Pure &amp; Emotional</span>
+                        <h2>아이들의 눈에 비친 세상은<br />생각보다 훨씬 다채롭습니다.</h2>
+                        <p>우리는 그 아름다운 일상이 계속될 수 있도록<br />가장 안전하고 순수한 성분만을 담았습니다.</p>
+                    </div>
+                    <div class="banner-img" data-aos="fade-left">
+                        <img src="img/siba.jpg" alt="시바견 일상">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ───── EMOTIONAL SECTION: GUARDIAN LIFE ───── -->
+        <section id="emotions" class="section bg-light">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up" style="text-align: center; margin-bottom: 80px;">
+                    <span class="label">Guardian's Daily Life</span>
+                    <h2 class="section-title">오늘 하루도 고생한 당신과<br>당신을 기다린 아이들</h2>
+                </div>
+                <div class="guide-grid">
+                    <article class="guide-card" data-aos="fade-up">
+                        <div class="card-img"
+                            style="background: var(--bg-cream); display: flex; align-items: center; justify-content: center; padding: 40px;">
+                            <img src="img/Guardian's Daily Life_01.png" alt="Commute"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <span class="label" style="font-size: 0.7rem; color: #7A9A6A;">#퇴근길</span>
+                            <h3>"다녀왔어" 한 마디에<br>흔들리는 꼬리</h3>
+                            <p>지친 몸으로 현관문을 열 때, 가장 먼저 달려오는 건 세상에서 가장 따뜻한 위로입니다.</p>
+                        </div>
+                    </article>
+                    <article class="guide-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-img"
+                            style="background: var(--bg-cream); display: flex; align-items: center; justify-content: center; padding: 40px;">
+                            <img src="img/Guardian's Daily Life_02.png" alt="Working"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <span class="label" style="font-size: 0.7rem; color: #7A9A6A;">#재택근무</span>
+                            <h3>모니터 옆에서<br>졸고 있는 작은 숨소리</h3>
+                            <p>바쁜 업무 중에도 발치에 머무르는 아이의 존재는, 차가운 사무실의 공기를 온기로 채워줍니다.</p>
+                        </div>
+                    </article>
+                    <article class="guide-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-img"
+                            style="background: var(--bg-cream); display: flex; align-items: center; justify-content: center; padding: 40px;">
+                            <img src="img/Guardian's Daily Life_03.png" alt="Rest"
+                                style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <div class="card-body">
+                            <span class="label" style="font-size: 0.7rem; color: #7A9A6A;">#휴식시간</span>
+                            <h3>냄새 걱정 없이<br>마음껏 부비는 일상</h3>
+                            <p>아이들이 닿는 모든 곳이 깨끗하도록. Paw & Soul은 당신의 쉼표를 더 안전하게 지켜줍니다.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
 
 
-  <section class="hero">
-
-    <div class="hero-text">
-      <span class="hero-label">AI CHARACTER PORTFOLIO</span>
-
-      <h1 class="hero-title-animated"><span>모</span><span>두</span><span>가</span><span>&nbsp;</span><span>거</span><span>친</span><span>&nbsp;</span><span>파</span><span>도</span><span>로</span><span>&nbsp;</span><span>뛰</span><span>어</span><span>들</span><span>&nbsp;</span><span>때</span><span>,</span><br><span>포</span><span>카</span><span>는</span><span>&nbsp;</span><span>당</span><span>신</span><span>의</span><span>&nbsp;</span><span>곁</span><span>에</span><span>서</span><span>&nbsp;</span><span>숨</span><span>을</span><span>&nbsp;</span><span>고</span><span>릅</span><span>니</span><span>다</span><span>.</span></h1>
-
-      <p>더 빨리, 더 멀리 가야 한다고 말하는 세상 속에서. AI의 차가운 기술에서 태어나 세상 가장 따뜻한 위로를 건네는 반려 인형 POKA. 아무것도 하지 않아도 괜찮아요, 이제 포카와 함께 온전한
-        힐링을 누려보세요</p>
-
-      <div class="hero-buttons">
-        <a href="#portfolio" class="btn-dark">작업물 보기</a>
-        <a href="#process" class="btn-light">제작 과정</a>
-      </div>
-    </div>
 
 
-    <div class="hero-image">
-      <img class="hero-img-default" src="img/poka14_re.png" alt="포카 뒷모습 - 조용한 휴식">
-      <img class="hero-img-hover" src="img/poka03_re.png" alt="포카 기도 포즈 - 따뜻한 위로">
-    </div>
-
-  </section>
-
-
-
-  <section class="story" id="about">
-
-    <div class="section-title">
-      <span>BRAND STORY</span>
-      <h2>포카는 위로에서 시작되었습니다.</h2>
-    </div>
-
-    <div class="story-grid">
-
-      <div class="story-card">
-        <h3>감정의 시작</h3>
-
-        <p>
-          어릴 때부터 좋아했던 동물 인형은
-          단순한 장난감이 아니라 위로와 안정감을 주는 존재였습니다.
-          포카는 그런 감정을 담아 만든 캐릭터입니다.
-        </p>
-      </div>
-
-      <div class="story-card">
-        <h3>AI와의 협업</h3>
-
-        <p>
-          Gemini를 통해 세계관과 방향성을 구상하고,
-          ChatGPT를 통해 감정선과 포즈를 확장하며
-          하나의 살아있는 캐릭터로 발전시켰습니다.
-        </p>
-      </div>
-
-      <div class="story-card">
-        <h3>감정형 캐릭터</h3>
-
-        <p>
-          포카는 단순히 귀여운 캐릭터가 아니라
-          일상 속 감정을 대신 표현해주는
-          반려형 이모티콘 캐릭터를 목표로 합니다.
-        </p>
-      </div>
-
-    </div>
-  </section>
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="about-container">
+                    <div class="about-content" data-aos="fade-right">
+                        <span class="label">Our Philosophy</span>
+                        <h2 class="section-title">아이의 고통을 멈추고<br>일상의 평온을 되찾는 시간</h2>
+                        <p>단순한 소독제가 아닙니다. 반려동물의 고질적인 피부 염증을 해결하여, 보호자와 아이가 함께 누리는 생활 습관까지 변화시키는 '치유의 솔루션'입니다.</p>
+                        <ul class="feature-list">
+                            <li>
+                                <span class="feature-icon">01</span>
+                                <div class="feature-text">
+                                    <strong>48H Rapid Relief</strong>
+                                    <p>화학성분 0%, 고농축 자연 유래 성분으로 단 1~2일 만에 눈에 보이는 피부 진정 효과를 증명합니다.</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="feature-icon">02</span>
+                                <div class="feature-text">
+                                    <strong>Safe for All</strong>
+                                    <p>아이가 핥아도, 보호자의 손에 닿아도 무해합니다. 온 가족이 함께 안심하고 사용하는 의약외품입니다.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="philosophy-cards" data-aos="fade-left">
+                        <div class="phil-card"><img src="img/dog01.png" alt="Golden Retriever"></div>
+                        <div class="phil-card"><img src="img/dog02.png" alt="French Bulldog"></div>
+                        <div class="phil-card"><img src="img/dogcat01.png" alt="Cat and Poodle"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
 
 
-  <section class="poka-profile-section" id="profile">
-    <div class="poka-container">
 
-      <div class="poka-title-area">
-        <span class="poka-subtitle">ABOUT POKA</span>
-        <h2 class="poka-main-title">🧸 POKA Official Profile</h2>
-      </div>
+        <!-- ───── PET GUIDE ───── -->
+        <section id="guides" class="section guides bg-light">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="label">Care Guide</span>
+                    <h2 class="section-title">반려생활을 위한<br>따뜻한 가이드</h2>
+                </div>
+                <div class="guide-grid">
+                    <article class="guide-card" data-aos="fade-up">
+                        <div class="card-img">
+                            <img src="img/cat.jpg" alt="고양이 케어">
+                        </div>
+                        <div class="card-body">
+                            <div class="tag-header">
+                                <span class="tag">Cat Care</span>
+                            </div>
+                            <h3>후각이 예민한 고양이를 위한 '무향'의 미학</h3>
+                            <p>강한 인공 향료가 아이들의 스트레스 원인? 고양이가 진짜 평온함을 느끼는 공간 구성법을 알아보세요.</p>
+                            <a href="javascript:void(0)" class="link-more btn-guide-trigger"
+                                onclick="openGuideModal('cat')">Learn More
+                                →</a>
+                        </div>
+                    </article>
+                    <article class="guide-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-img">
+                            <img src="img/siba_02.jpg" alt="강아지 산책">
+                        </div>
+                        <div class="card-body">
+                            <div class="tag-header">
+                                <span class="tag">Dog Care</span>
+                            </div>
+                            <h3>산책 후 '발사탕'을 멈추게 하는 3분 케어</h3>
+                            <p>습진과 가려움증의 원인이 되는 산책 후 습기. 아이들의 발바닥 건강을 지키는 가장 확실한 습관.</p>
+                            <a href="javascript:void(0)" class="link-more btn-guide-trigger"
+                                onclick="openGuideModal('dog')">Learn More
+                                →</a>
+                        </div>
+                    </article>
+                    <article class="guide-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-img">
+                            <img src="img/optimize.jpg" alt="영양 가이드">
+                        </div>
+                        <div class="card-body">
+                            <div class="tag-header">
+                                <span class="tag">Skin Relief</span>
+                            </div>
+                            <h3>48시간의 기적, 예민한 피부를 위한 솔루션</h3>
+                            <p>핥아도 안전한 성분으로 붉게 올라온 피부를 빠르게 진정시키는 법. 우리 아이의 꿀잠을 위한 비결.</p>
+                            <a href="javascript:void(0)" class="link-more btn-guide-trigger"
+                                onclick="openGuideModal('nutrition')">Learn More →</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
 
-      <div class="profile-flex-container">
+        <!-- ───── NEWSLETTER (Redesigned: Sliding Parallax) ───── -->
+        <section id="newsletter" class="section cta emotional-parallax">
+            <div class="parallax-overlay"></div>
+            <div class="container">
+                <div class="cta-card" data-aos="fade-up">
+                    <div class="cta-content">
+                        <span class="label">Join Our Community</span>
+                        <h2>아이와 함께하는 모든 순간이<br />더 빛나도록 노력하겠습니다.</h2>
+                        <p>뉴스레터를 통해 마음이 따뜻해지는 소식과 케어 가이드를 만나보세요.</p>
+                        <form class="cta-form" id="newsletter-subscription-form">
+                            <input type="email" placeholder="평소 사용하는 이메일을 입력해 주세요" required />
+                            <button type="submit" class="btn btn-primary">소식 받기</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
-        <div class="poka-info-card">
+    <!-- ───── FOOTER (Redesigned: Brighter & Cute) ───── -->
+    <footer class="footer-light">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <img src="img/logore.png" alt="Paw & Soul Logo"
+                        style="height: 100px; width: auto; object-fit: contain; margin-bottom: 8px;">
+                    <a href="/" class="footer-logo">Paw &amp; Soul</a>
+                    <p>반려동물과 함께, 더 아름다운 일상</p>
 
-          <div class="poka-top-char-visual profile-img-wrapper">
-            <img src="img/poka02_re.png" alt="Poka Profile" class="poka-wink-char">
-          </div>
-
-          <h3><span class="badge-num">1</span> 기본 정보 (Basic Info)</h3>
-
-          <table class="poka-info-table">
-            <tr>
-              <th>이름</th>
-              <td style="font-weight: 500;">포카 (POKA)</td>
-            </tr>
-            <tr>
-              <th>종족</th>
-              <td>세상에서 가장 행복한 쿼카 동물의 미소와 포근한 곰돌이의 몸매를 닮아, 지친 마음에 위로를 건네는 특별한 존재</td>
-            </tr>
-            <tr>
-              <th>생일</th>
-              <td>4월 18일 <span class="birth-sub">(솜뭉치에 따뜻한 숨결이 불어넣어진 날)</span></td>
-            </tr>
-            <tr>
-              <th>성격</th>
-              <td>세상 모든 것에 호기심이 많고, 낙천적이며 다정함.<br>약간의 장난기를 가짐</td>
-            </tr>
-            <tr>
-              <th>매력 포인트</th>
-              <td>보기만 해도 기분이 좋아지는 해맑은 윙크, <br>만지면 퐁신퐁신할 것 같은 털 질감</td>
-            </tr>
-          </table>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-col">
+                        <h4>Contact</h4>
+                        <ul>
+                            <li><strong>shin.minha</strong></li>
+                            <li><a href="mailto:minha86ibo@gmail.com">minha86ibo@gmail.com</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-col">
+                        <h4>Brand</h4>
+                        <ul>
+                            <li><a href="#">우리의 이야기</a></li>
+                            <li><a href="#">지속가능성</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Paw & Soul. All rights reserved.</p>
+            </div>
         </div>
+    </footer>
 
-        <div class="poka-right-group">
+    <!-- ───── PRODUCT COMING SOON MODAL (CUTE & FUN) ───── -->
+    <div id="product-coming-soon-modal" class="modal">
+        <div class="modal-overlay" onclick="closeProductComingSoonModal()"></div>
+        <div class="modal-container cute-modal">
+            <button class="modal-close" onclick="closeProductComingSoonModal()">&times;</button>
+            <div class="cute-modal-content">
+                <div class="cute-header">
+                    <img src="img/comingsoon.png" alt="Coming Soon"
+                        style="width: 240px; height:135px; object-fit: contain; margin-bottom: 15px; animation: bounce 2s infinite ease-in-out; filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.08));">
+                    <h2>Coming Soon!</h2>
+                    <p>아이들을 위한 예쁜 제품들이 열심히 준비 중이에요! ✨</p>
+                </div>
 
-          <div class="poka-story-card">
-            <h3><span class="badge-num">2</span> 포카의 정체성 &amp; 세계관 (Story)</h3>
-            <h4 class="poka-story-quote">"지치고 외로운 날,<br>당신의 마음속 방 한구석에 조용히 찾아온 비밀 친구."</h4>
-            <p>
-              포카는 누군가가 가장 소중히 아끼던 동물 인형에 깊은 위로의 마음이 쌓여 생명을 얻게 된 특별한 친구입니다. <br><br>
-              특유의 해맑은 미소와 위트 있는 윙크를 날리며, 일상에 치여 웃음을 잃어버린 어른들에게 <strong>"오늘 하루도 참 잘했어! 뿜뿜!"</strong> 하고 긍정적인 에너지를 전파하는 것이
-              포카의 비밀 임무입니다.
-            </p>
-          </div>
+                <div class="preview-grid">
+                    <div class="preview-item"><img src="img/image01.jpg" alt="Preview"></div>
+                    <div class="preview-item"><img src="img/image02.jpg" alt="Preview"></div>
+                    <div class="preview-item"><img src="img/image04.jpg" alt="Preview"></div>
+                    <div class="preview-item"><img src="img/image05.jpg" alt="Preview"></div>
+                    <div class="preview-item"><img src="img/image07.jpg" alt="Preview"></div>
+                </div>
 
-          <div class="poka-taste-card">
-            <h3><span class="badge-num">3</span> 취향 노트 (Taste)</h3>
-            <div class="taste-flex-wrap">
-
-              <div class="taste-sub-box">
-                <h4 class="like-title">❤️ 좋아하는 것</h4>
-                <ul>
-                  <li><strong>달콤한 간식:</strong> 초코칩 쿠키와 시원한 음료수로 당 충전하기</li>
-                  <li><strong>독서:</strong> 침대에 누워 그림책 읽기 <span>(읽다가 금방 잠들곤 함)</span></li>
-                  <li><strong>산책:</strong> 풍선을 들고 동네를 산책하며 사람들에게 인사하기</li>
-                </ul>
-              </div>
-
-              <div class="taste-sub-box">
-                <h4 class="hate-title">💔 싫어하는 것</h4>
-                <ul>
-                  <li><strong>차가운 침묵:</strong> 주변 사람들이 우울해하거나 슬퍼하는 무거운 공기</li>
-                  <li><strong>알람 소리:</strong> 아침 일찍 출근해야 하는 사람들의 피곤한 일상 <span>(하품을 하며 함께 안타까워함)</span></li>
-                </ul>
-              </div>
-
+                <div class="cute-footer">
+                    <p>출시 알림을 구독하고 가장 먼저 만나보세요!</p>
+                    <button class="btn-primary"
+                        onclick="closeProductComingSoonModal(); window.location.hash='#newsletter';">알림 신청하러 가기</button>
+                </div>
             </div>
-          </div>
-
         </div>
-      </div>
     </div>
-  </section>
+    <div id="guide-modal" class="modal">
+        <div class="modal-overlay" onclick="closeGuideModal()"></div>
+        <div class="modal-container lush-modal">
+            <button class="modal-close" onclick="closeGuideModal()">&times;</button>
+            <div class="lush-modal-content">
+                <div class="lush-left">
+                    <img id="modal-product-img" src="" alt="Product">
+                </div>
+                <div class="lush-right">
+                    <div class="guide-info">
+                        <h2 id="modal-guide-title">Guide Title</h2>
+                        <div id="modal-guide-content" class="guide-text-content"></div>
+                    </div>
 
+                    <div class="product-info-box">
+                        <span class="label" style="font-size: 0.65rem;">Recommended Product</span>
+                        <h3 id="modal-product-name">Product Name</h3>
+                        <p id="modal-product-summary" class="product-summary"></p>
+                        <p id="modal-product-desc" class="product-desc"></p>
 
+                        <div class="product-stats" id="modal-product-stats"></div>
 
-
-  <!-- ═══ AI PROCESS — Four-Panel Progression ═══ -->
-  <section id="process" class="content-section ai-process-section reveal-element">
-    <h3 class="section-title">AI Collaboration History</h3>
-
-    <div class="four-panel-progression">
-
-      <!-- ── Step 1: 프롬프트 작성 시작 ── -->
-      <div class="progression-panel">
-        <div class="panel-step-label">1. 프롬프트 작성 시작...</div>
-        <div class="panel-body">
-
-          <div class="mini-prompt-console">
-            <div class="mini-console-header">
-              <div class="ai-status-dot"></div>
-              <span class="mini-console-title">AI 프롬프트 스튜디오</span>
+                        <div class="modal-actions">
+                            <button class="btn-buy">To Be Continued</button>
+                            <p class="emotional-copy">보호자와 함께 쓰는 안전함</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="mini-console-body">
-              <div class="mini-field-label">&#10022; 이미지 생성 프롬프트</div>
-              <div class="mini-field-area">
-                <p class="mini-field-text">POKA(포카)라는 이름의 3D 스타일의 아늑하고...<span class="blinking-cursor">|</span></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mini-stage stage-1">
-            <div class="stage-grid"></div>
-          </div>
-
         </div>
-      </div>
+    </div>
 
-      <!-- ── Step 2: 글자가 써지며 형태가 ── -->
-      <div class="progression-panel">
-        <div class="panel-step-label">2. 글자가 써지며 형태가...</div>
-        <div class="panel-body">
-
-          <div class="mini-prompt-console">
-            <div class="mini-console-header">
-              <div class="ai-status-dot"></div>
-              <span class="mini-console-title">AI 프롬프트 스튜디오</span>
+    <!-- ───── NEWSLETTER SUCCESS MODAL (MINIMAL & PREMIUM) ───── -->
+    <div id="newsletter-success-modal" class="modal">
+        <div class="modal-overlay" onclick="closeNewsletterSuccessModal()"></div>
+        <div class="modal-container success-modal">
+            <button class="modal-close" onclick="closeNewsletterSuccessModal()" style="color: #FFF;">&times;</button>
+            <div class="success-modal-content">
+                <h2>🎉 반갑습니다, 보호자님!</h2>
+                <p>아이와 함께하는 공간이 더 맑고 완전해질 수 있도록, Paw & Soul의 첫 신제품 출시 소식과 특별한 혜택을 입력하신 이메일로 가장 먼저 전해드릴게요. 우리 아이를 위한 깨끗한
+                    약속, 조금만 기다려주세요! ✨</p>
+                <button class="btn-confirm" onclick="closeNewsletterSuccessModal()">확인</button>
             </div>
-            <div class="mini-console-body">
-              <div class="mini-field-label">&#10022; 이미지 생성 프롬프트</div>
-              <div class="mini-field-area">
-                <p class="mini-field-text">POKA(포카)... 캐릭터를 생성해줘. 포카는 바닥에 책상다리를 하고...<span class="blinking-cursor">|</span></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mini-stage stage-2">
-            <div class="stage-grid"></div>
-            <div class="stage-dashed-circle"></div>
-            <img src="img/poka12_re.png" alt="포카 윤곽" class="poka-stage-img poka-ghost">
-          </div>
-
         </div>
-      </div>
-
-      <!-- ── Step 3: 질감과 빛이 ── -->
-      <div class="progression-panel">
-        <div class="panel-step-label">3. 질감과 빛이...</div>
-        <div class="panel-body">
-
-          <div class="mini-prompt-console">
-            <div class="mini-console-header">
-              <div class="ai-status-dot"></div>
-              <span class="mini-console-title">AI 프롬프트 스튜디오</span>
-            </div>
-            <div class="mini-console-body">
-              <div class="mini-field-label">&#10022; 이미지 생성 프롬프트</div>
-              <div class="mini-field-area">
-                <p class="mini-field-text">POKA(포카)... 인사를 건네고 있어. 질감은 고급 테디베어처럼...<span class="blinking-cursor">|</span></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mini-stage stage-3">
-            <div class="stage-grid"></div>
-            <div class="stage-dashed-circle"></div>
-            <div class="poka-glow-ring"></div>
-            <img src="img/poka12_re.png" alt="포카 출현" class="poka-stage-img poka-emerging">
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ── Step 4: 포카 완성! (Pop-Out) ── -->
-      <div class="progression-panel progression-panel--final">
-        <div class="panel-step-label panel-step-label--final">4. 포카 완성! ✦</div>
-        <div class="panel-body panel-body--final">
-
-          <div class="mini-prompt-console mini-prompt-console--final">
-            <div class="mini-console-header">
-              <div class="ai-status-dot"></div>
-              <span class="mini-console-title">AI 프롬프트 스튜디오</span>
-            </div>
-            <div class="mini-console-body">
-              <div class="mini-field-label">&#10022; 이미지 생성 프롬프트</div>
-              <div class="mini-field-area">
-                <p class="mini-field-text"><span class="typing-sentence"></span><span class="blinking-cursor">|</span></p>
-              </div>
-            </div>
-          </div>
-
-          <div class="mini-stage stage-4 mini-stage--final">
-            <div class="stage-grid"></div>
-            <div class="stage-dashed-circle stage-dashed-circle--faded"></div>
-            <img src="img/poka12_re.png" alt="포카 완성" class="poka-stage-img poka-pop-out">
-            <div class="mini-status-indicator status-light-up">AI BUILDING PROCESS: COMPLETED</div>
-          </div>
-
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-
-
-  <section class="portfolio" id="portfolio">
-
-    <div class="section-title">
-      <span>PORTFOLIO</span>
-      <h2>POKA Character Showcase</h2>
     </div>
 
+    <!-- AOS & Scripts -->
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
 
+        // Navigation Scroll Effect
+        const nav = document.querySelector('nav');
+        window.onscroll = () => {
+            if (window.scrollY > 50) nav.classList.add('scrolled');
+            else nav.classList.remove('scrolled');
+        };
 
-    <div class="portfolio-top">
-
-      <div class="portfolio-heading">
-        <h3>24 Emotions</h3>
-        <p>일상 속 감정을 담은 포카 이모티콘</p>
-      </div>
-
-      <div class="emoji-grid">
-
-        <div class="emoji-card"><img src="img/poka_02.png" alt="이모티콘 01"></div>
-        <div class="emoji-card"><img src="img/poka_03.png" alt="이모티콘 02"></div>
-        <div class="emoji-card"><img src="img/poka_06.png" alt="이모티콘 03"></div>
-        <div class="emoji-card"><img src="img/poka_07.png" alt="이모티콘 04"></div>
-        <div class="emoji-card"><img src="img/poka_08.png" alt="이모티콘 05"></div>
-        <div class="emoji-card"><img src="img/poka_11.png" alt="이모티콘 06"></div>
-        <div class="emoji-card"><img src="img/poka_12.png" alt="이모티콘 07"></div>
-        <div class="emoji-card"><img src="img/poka_23.png" alt="이모티콘 08"></div>
-
-      </div>
-    </div>
-
-
-
-
-    <div class="portfolio-bottom">
-
-      <div class="portfolio-heading">
-        <h3>40 Character Poses</h3>
-        <p>다양한 상황과 동작을 표현한 포카 포즈</p>
-      </div>
-
-      <div class="pose-grid">
-        <div class="pose-card"><img src="img/poka12_re.png" alt="포카 포즈 01"></div>
-        <div class="pose-card"><img src="img/poka04_re.png" alt="포카 포즈 02"></div>
-        <div class="pose-card"><img src="img/poka14_re.png" alt="포카 포즈 03"></div>
-        <div class="pose-card"><img src="img/poka09_re.png" alt="포카 포즈 04"></div>
-        <div class="pose-card"><img src="img/poka05_re.png" alt="포카 포즈 05"></div>
-        <div class="pose-card"><img src="img/poka06_re.png" alt="포카 포즈 06"></div>
-
-        <div class="pose-card"><img src="img/poka07_re.png" alt="포카 포즈 07"></div>
-        <div class="pose-card"><img src="img/poka08_re.png" alt="포카 포즈 08"></div>
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-
-  <section class="goods" id="goods">
-
-    <div class="section-title">
-      <span>EXPANSION</span>
-      <h2>POKA Goods Mockup</h2>
-    </div>
-
-
-    <div class="goods-grid">
-
-      <div class="goods-card">
-        <img src="img/deskmat_daily4.png" alt="Desk Mat Mockup">
-        <h3>Desk Mat</h3>
-      </div>
-
-      <div class="goods-card">
-        <img src="img/wallet_fan4.png" alt="Card Wallet Mockup">
-        <h3>Card Wallet</h3>
-      </div>
-
-      <div class="goods-card">
-        <img src="img/monitor_fan1.png" alt="Monitor Plush Mockup">
-        <h3>Monitor Plush</h3>
-      </div>
-
-    </div>
-
-  </section>
-
-
-
-
-  <section class="copyright">
-
-    <div class="copyright-box">
-
-      <h3>Creative Ownership</h3>
-
-      <p>
-        포카 캐릭터는 AI 협업 기반으로 직접 기획 및 제작된 창작물입니다.
-        제작 과정과 히스토리를 통해 최초 창작 기록을 보관하고 있습니다.
-      </p>
-
-      <span>
-        본 캐릭터 및 이모티콘의 무단 도용,
-        상업적 이용을 금합니다.
-      </span>
-
-    </div>
-
-  </section>
-
-
-
-
-  <footer class="footer">
-
-    <p>
-      © 2026. Shin Min-ha All rights reserved.
-    </p>
-    <p>minha86ibo@gmail.com</p>
-
-  </footer>
-
-  <script>
-    const hamburgerBtn = document.getElementById('hamburgerBtn');
-    const nav = document.querySelector('.nav');
-
-    hamburgerBtn.addEventListener('click', () => {
-      hamburgerBtn.classList.toggle('active');
-      nav.classList.toggle('active');
-    });
-
-    // Close menu when a link is clicked
-    document.querySelectorAll('.nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburgerBtn.classList.remove('active');
-        nav.classList.remove('active');
-      });
-    });
-
-    // AI Process Simulator: add .active when section scrolls into view
-    const processSection = document.querySelector('.ai-process-section');
-    if (processSection) {
-      const simObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-            simObserver.unobserve(entry.target); // fire only once
-          }
-        });
-      }, { threshold: 0.25 });
-      simObserver.observe(processSection);
-    }
-
-    // --- Typing Animation & Image Pop-out Logic ---
-    const typedTextSpan = document.querySelector('.typing-sentence');
-    const cursorSpan = document.querySelector('.blinking-cursor');
-    const popOutImg = document.querySelector('.poka-pop-out');
-    const statusLight = document.querySelector('.status-light-up');
-    const textArray = "POKA(포카)라는 이름의 3D 스타일의 아늑하고 푹신한 곰 인형 캐릭터를 생성해줘. 바닥에 책상다리를 하고 앉아 인사를 건네고 있어.";
-    const typingDelay = 50; // Delay between characters in ms
-    let charIndex = 0;
-    let isAnimated = false; // State flag to prevent overlapping animations
-
-    function triggerPokaCreation() {
-      // Trigger the image pop-out and status light animations
-      if (popOutImg) popOutImg.classList.add('animate');
-      if (statusLight) statusLight.classList.add('animate');
-    }
-
-    // Guarantee that the Poka creation logic is safely triggered on mobile via user interaction
-    const pokaCompleteLabel = document.querySelector('.panel-step-label--final');
-    if (pokaCompleteLabel) {
-      pokaCompleteLabel.style.cursor = 'pointer';
-      pokaCompleteLabel.addEventListener('click', triggerPokaCreation);
-      pokaCompleteLabel.addEventListener('touchstart', triggerPokaCreation, { passive: true });
-    }
-
-    if (typedTextSpan) {
-      typedTextSpan.addEventListener('input', () => {
-        // Bound to input event listener as requested
-      });
-    }
-
-    function typeEffect() {
-      if (charIndex < textArray.length) {
-        typedTextSpan.textContent += textArray.charAt(charIndex);
-        // Dispatch 'input' event to force mobile browser to treat it as user input
-        typedTextSpan.dispatchEvent(new Event('input', { bubbles: true }));
-        charIndex++;
-        setTimeout(typeEffect, typingDelay);
-      } else {
-        // Explicitly dispatch synthetic events to force mobile browser update
-        typedTextSpan.dispatchEvent(new Event('input', { bubbles: true }));
-        typedTextSpan.dispatchEvent(new Event('change', { bubbles: true }));
-
-        // Hide cursor when typing is done
-        if (cursorSpan) cursorSpan.style.display = 'none';
-        
-        // Trigger Poka creation explicitly right after
-        triggerPokaCreation();
-      }
-    }
-
-    function startProcessAnimation() {
-      if (isAnimated) return; // Prevent duplication
-      isAnimated = true;
-      
-      // Ensure text is clear and cursor is visible
-      if (typedTextSpan) typedTextSpan.textContent = '';
-      if (cursorSpan) cursorSpan.style.display = 'inline-block';
-      
-      typeEffect();
-    }
-
-    // 1. Trigger when scrolled into view
-    if (processSection) {
-      const animationObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            startProcessAnimation();
-          }
-        });
-      }, { threshold: 0.5 }); // Trigger when 50% visible
-      animationObserver.observe(processSection);
-    }
-
-    // 2. Trigger from navbar "process" and Hero "제작과정" buttons
-    const processButtons = document.querySelectorAll('a[href="#process"]');
-    processButtons.forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.querySelector('#process');
-        if (target) {
-          // Smooth scroll to the section
-          target.scrollIntoView({ behavior: 'smooth' });
-          
-          // Fallback to trigger animation if observer misses it (e.g., if already in view)
-          setTimeout(() => {
-            startProcessAnimation();
-          }, 600); // Wait for scroll to complete
+        // Hamburger Menu
+        const hamburger = document.getElementById('hamburger-menu');
+        const navMenu = document.getElementById('nav-menu');
+        if (hamburger) {
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+            });
         }
-      });
-    });
-  </script>
 
+        const navLinks = document.querySelectorAll('.nav-menu a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (hamburger && hamburger.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                }
+            });
+        });
 
+        // Hero Staggered Animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = [
+                { id: 'tagline', delay: 200 },
+                { id: 'headline', delay: 400 },
+                { id: 'subcopy', delay: 600 },
+                { id: 'hero-form', delay: 800 },
+                { id: 'hero-proof', delay: 1000 }
+            ];
 
+            elements.forEach(item => {
+                setTimeout(() => {
+                    const el = document.getElementById(item.id);
+                    if (el) el.classList.add('animate-in');
+                }, item.delay);
+            });
+
+            setTimeout(() => {
+                const visual = document.getElementById('hero-visual');
+                if (visual) visual.classList.add('animate-slide-left');
+            }, 500);
+        });
+
+        // Modal Logic (Guide)
+        const guideModal = document.getElementById('guide-modal');
+        const guideContent = {
+            cat: {
+                title: "후각이 예민한 고양이를 위한 '무향'의 미학",
+                content: "<ul><li><strong>무향의 중요성:</strong> 고양이의 후각은 사람보다 수십 배 예민합니다.</li><li><strong>인공 향료의 위험성:</strong> 방향제나 향수가 아이들에게 스트레스와 호흡기 질환을 유발할 수 있습니다.</li><li><strong>안전한 탈취법:</strong> 향으로 덮는 것이 아닌, 냄새의 원인을 분해하는 방식이 필요합니다.</li></ul>",
+                product: {
+                    name: "No. 03 플랫 사각 보틀",
+                    summary: "인공 향료 0%, 고양이의 평온함을 지키는 순수 솔루션",
+                    desc: "인공 향료와 화학 보존제 없이 오직 식물 추출물만 담았습니다. 아이들이 자주 머무는 침구류에 뿌려도 산뜻합니다.",
+                    img: "img/image04.jpg",
+                    stats: ["자연유래 100%", "저자극 인증"]
+                }
+            },
+            dog: {
+                title: "산책 후 '발사탕'을 멈추게 하는 3분 케어",
+                content: "<ul><li><strong>발바닥 습진:</strong> 산책 후 발바닥 사이의 습기는 세균 번식의 최적 조건입니다.</li><li><strong>노즈워크와 발 관리:</strong> 즐거운 산책 후에도 발을 핥는다면 피부 자극이 시작된 것일 수 있습니다.</li><li><strong>빠른 진정:</strong> 물 세정 없이도 안전하게 살균하고 건조하는 습관이 중요합니다.</li></ul>",
+                product: {
+                    name: "No. 06 알루미늄 메탈 보틀",
+                    summary: "99.9% 강력 살균으로 산책 후의 가려움증을 즉시 해결하세요",
+                    desc: "분사 후 1~2일 내에 개선되는 피부 상태를 확인하세요. 99.9% 강력 살균으로 산책 후 발 관리에 필수입니다.",
+                    img: "img/image02.jpg",
+                    stats: ["살균 99.9%", "48h 지속"]
+                }
+            },
+            nutrition: {
+                title: "48시간의 기적, 예민한 피부를 위한 솔루션",
+                content: "<ul><li><strong>피부 진정:</strong> 붉게 올라온 염증과 가려움증을 자연 성분으로 다독입니다.</li><li><strong>핥아도 안전함:</strong> 전성분 EWG 그린 등급으로 아이가 몸을 핥아도 전혀 무해합니다.</li><li><strong>지속적인 효과:</strong> 고농축 자연 유래 성분이 피부 장벽을 강화하여 재발을 방지합니다.</li></ul>",
+                product: {
+                    name: "No. 08 소프트 스퀴즈 타입",
+                    summary: "단 48시간 만에 눈에 보이는 피부 변화를 경험하세요",
+                    desc: "핥아도 안전한 자연 성분으로, 예민한 발바닥 사이사이까지 안심하고 사용하세요. 깊은 보습과 진정을 동시에.",
+                    img: "img/image10.jpg",
+                    stats: ["저자극 0.0", "고농축 진정"]
+                }
+            }
+        };
+
+        function openGuideModal(type) {
+            const data = guideContent[type];
+            document.getElementById('modal-guide-title').innerText = data.title;
+            document.getElementById('modal-guide-content').innerHTML = data.content;
+            document.getElementById('modal-product-img').src = data.product.img;
+            document.getElementById('modal-product-name').innerText = data.product.name;
+            document.getElementById('modal-product-summary').innerText = data.product.summary;
+            document.getElementById('modal-product-desc').innerText = data.product.desc;
+
+            const statsContainer = document.getElementById('modal-product-stats');
+            statsContainer.innerHTML = data.product.stats.map(s => `<span class="stat-tag">${s}</span>`).join('');
+
+            guideModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeGuideModal() {
+            guideModal.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+
+        // Modal Logic (Product Coming Soon)
+        const productComingSoonModal = document.getElementById('product-coming-soon-modal');
+        function openProductComingSoonModal() {
+            productComingSoonModal.classList.add('is-active');
+            document.body.style.overflow = 'hidden';
+        }
+        function closeProductComingSoonModal() {
+            productComingSoonModal.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+
+        // Modal Logic (Newsletter Success)
+        const newsletterSuccessModal = document.getElementById('newsletter-success-modal');
+        const newsletterForm = document.getElementById('newsletter-subscription-form');
+        const launchForm = document.getElementById('launch-form');
+
+        function handleSubscriptionSubmit(e) {
+            e.preventDefault();
+            const form = e.target;
+            const emailInput = form.querySelector('input[type="email"]');
+            if (emailInput && emailInput.value.includes('@')) {
+                // Open modal
+                newsletterSuccessModal.classList.add('is-active');
+                document.body.style.overflow = 'hidden';
+
+                // Clear input
+                emailInput.value = '';
+            }
+        }
+
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', handleSubscriptionSubmit);
+        }
+
+        if (launchForm) {
+            launchForm.addEventListener('submit', handleSubscriptionSubmit);
+        }
+
+        function closeNewsletterSuccessModal() {
+            newsletterSuccessModal.classList.remove('is-active');
+            document.body.style.overflow = '';
+        }
+
+        // Gold Sparkle Trail
+        const sparklesContainer = document.getElementById('sparkles-container');
+
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let isMoving = false;
+        let movementTimeout;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            isMoving = true;
+
+            clearTimeout(movementTimeout);
+            movementTimeout = setTimeout(() => {
+                isMoving = false;
+            }, 100);
+        });
+
+        const particles = [];
+
+        function createSparkle(x, y, vx, vy) {
+            const sparkle = document.createElement('div');
+            sparkle.classList.add('sparkle-particle');
+
+            // Randomize size between 2px and 5px
+            const size = Math.random() * 3 + 2;
+            sparkle.style.width = size + 'px';
+            sparkle.style.height = size + 'px';
+
+            sparklesContainer.appendChild(sparkle);
+
+            // Random spread velocity (organic expansion)
+            const angle = Math.random() * Math.PI * 2;
+            const speed = Math.random() * 3 + 1.5;
+
+            // Combine mouse velocity with random scatter
+            const finalVx = vx * 0.05 + Math.cos(angle) * speed;
+            const finalVy = vy * 0.05 + Math.sin(angle) * speed;
+
+            // Fade out seamlessly within 0.4 - 0.6 seconds (24-36 frames at 60fps)
+            const lifeDuration = Math.random() * 12 + 24;
+
+            particles.push({
+                el: sparkle,
+                x: x,
+                y: y,
+                vx: finalVx,
+                vy: finalVy,
+                life: 1.0,
+                decay: 1.0 / lifeDuration
+            });
+        }
+
+        let lastMouseX = mouseX;
+        let lastMouseY = mouseY;
+
+        function animateCursor(time) {
+            // Calculate velocity
+            const vx = mouseX - lastMouseX;
+            const vy = mouseY - lastMouseY;
+            lastMouseX = mouseX;
+            lastMouseY = mouseY;
+
+            // Create sparkles if moving (abundant amount)
+            const speedSq = vx * vx + vy * vy;
+            if (isMoving && speedSq > 0.5) {
+                // Spawn rate significantly increased
+                const numParticles = Math.min(Math.floor(Math.sqrt(speedSq) * 0.4) + 3, 10);
+                for (let i = 0; i < numParticles; i++) {
+                    createSparkle(mouseX, mouseY, vx, vy);
+                }
+            }
+
+            // Update particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+                p.life -= p.decay;
+
+                if (p.life <= 0) {
+                    if (p.el.parentNode) p.el.parentNode.removeChild(p.el);
+                    particles.splice(i, 1);
+                } else {
+                    p.el.style.left = p.x + 'px';
+                    p.el.style.top = p.y + 'px';
+                    p.el.style.opacity = p.life;
+                    p.el.style.transform = `translate(-50%, -50%) scale(${p.life})`;
+                }
+            }
+
+            requestAnimationFrame(animateCursor);
+        }
+
+        requestAnimationFrame(animateCursor);
+    </script>
 </body>
 
 </html>
