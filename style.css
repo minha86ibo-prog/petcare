@@ -113,18 +113,21 @@ nav {
     top: 0;
     left: 0;
     width: 100%;
+    height: 70px;
     z-index: 1000;
-    padding: 30px 60px;
+    padding: 0 60px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: transparent;
     /* Transparent initially */
     transition: var(--transition);
+    overflow: visible;
 }
 
 nav.scrolled {
-    padding: 18px 60px;
+    height: 70px;
+    padding: 0 60px;
     background-color: rgba(28, 43, 31, 0.85);
     /* Glassmorphism on scroll */
     backdrop-filter: blur(15px);
@@ -138,6 +141,12 @@ nav.scrolled {
     font-weight: 700;
     color: var(--secondary);
     letter-spacing: -0.02em;
+    display: flex;
+    align-items: center;
+    transform: scale(2.0);
+    transform-origin: left center;
+    position: relative;
+    z-index: 1000;
 }
 
 .nav-menu {
@@ -463,19 +472,6 @@ nav.scrolled {
     object-fit: cover;
     border-radius: var(--radius-lg);
     box-shadow: 0 40px 100px rgba(28, 43, 31, 0.1);
-    animation: breatheEffect 5s ease-in-out infinite;
-    will-change: transform, filter;
-}
-
-@keyframes breatheEffect {
-    0%, 100% {
-        transform: scale(1);
-        filter: brightness(1);
-    }
-    50% {
-        transform: scale(1.02);
-        filter: brightness(1.05);
-    }
 }
 
 
@@ -494,7 +490,7 @@ nav.scrolled {
 .about-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 80px;
+    gap: 150px;
     align-items: center;
 }
 
@@ -579,8 +575,8 @@ nav.scrolled {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
     padding-bottom: 40px;
-    margin-left: -50px; /* Expand grid to the left into the gap area */
-    width: calc(100% + 50px); /* Increase total width while keeping right edge anchored */
+    margin-left: -100px; /* Expand grid to the left into the gap area */
+    width: calc(100% + 100px); /* Increase total width while keeping right edge anchored */
 }
 
 .phil-card {
@@ -794,28 +790,32 @@ nav.scrolled {
 .footer-top {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start; /* Ensure top alignment */
+    align-items: flex-start;
     margin-bottom: 100px;
 }
 
 .footer-logo {
     font-family: var(--font-serif);
-    font-size: 2rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--secondary);
     margin-bottom: 1rem;
     display: block;
+    letter-spacing: 0.1em;
+}
+
+.footer-brand p {
+    font-size: 0.9rem;
+    opacity: 0.6;
 }
 
 .footer-links {
     display: flex;
     gap: 100px;
-    margin-top: 110px; /* Offset the logo height (100px + 8px margin + slight tweak) to align text starting lines */
 }
 
 .footer-col h4 {
     color: var(--accent);
-    margin-top: 0; /* Remove default margin causing misalignment */
     margin-bottom: 2rem;
     font-size: 0.9rem;
     letter-spacing: 0.1em;
@@ -1475,7 +1475,6 @@ nav.scrolled {
     color: var(--primary);
     font-size: 1.2rem;
     font-weight: 800;
-    margin-top: 0; /* Remove default margin causing misalignment */
     margin-bottom: 2rem;
     font-family: var(--font-serif);
 }
@@ -1919,7 +1918,6 @@ nav.scrolled {
     .footer-links {
         flex-direction: column;
         gap: 40px;
-        margin-top: 0;
     }
 
     .footer-light {
